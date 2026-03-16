@@ -1,0 +1,7 @@
+Base URL: https://postman-echo.com
+Endpoint: /post
+Method: POST
+Parameters: message (required, string)
+Request format: JSON_POST
+Response format: JSON
+Type: ECHO_TEST

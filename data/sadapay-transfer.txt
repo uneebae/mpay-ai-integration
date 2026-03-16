@@ -1,0 +1,7 @@
+Base URL: https://api.sadapay.pk
+Endpoint: /v1/transfers
+Method: POST
+Parameters: sender_account (required, string), receiver_account (required, string), amount (required, decimal), currency (optional, string, default PKR), description (optional, string)
+Request format: JSON_POST
+Response format: JSON
+Type: SADA_TRANSFER

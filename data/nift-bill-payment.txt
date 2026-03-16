@@ -1,0 +1,7 @@
+Base URL: https://api.nift.pk
+Endpoint: /soap/billPayment
+Method: POST
+Parameters: consumer_number (required, string), amount (required, decimal), company_code (required, string), tran_auth_id (required, string)
+Request format: XML
+Response format: XML
+Type: NIFT_BILL_PAY

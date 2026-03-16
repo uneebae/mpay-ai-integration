@@ -1,0 +1,7 @@
+Base URL: https://gateway.raast.sbp.org.pk
+Endpoint: /raast/v1/pay
+Method: POST
+Parameters: sender_iban (required, string), receiver_iban (required, string), amount (required, decimal), purpose (required, string), transaction_ref (required, string)
+Request format: JSON_POST
+Response format: JSON
+Type: RAAST_P2P

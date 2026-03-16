@@ -1,0 +1,7 @@
+Base URL: https://sandbox.api.1link.net.pk
+Endpoint: /v1/ibft
+Method: POST
+Parameters: from_account (required, string), to_account (required, string), to_bank_imd (required, string), amount (required, decimal), purpose_of_payment (optional, string), beneficiary_name (optional, string)
+Request format: JSON_POST
+Response format: JSON
+Type: ONELINK_IBFT

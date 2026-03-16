@@ -1,0 +1,7 @@
+Base URL: https://api.easypaisa.com.pk
+Endpoint: /v2/balance-inquiry
+Method: POST
+Parameters: account_number (required, string), pin (required, string)
+Request format: JSON_POST
+Response format: JSON
+Type: EP_BALANCE_INQUIRY

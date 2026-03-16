@@ -1,0 +1,39 @@
+services:
+  # ── MySQL ──────────────────────────────────────────────────
+  mysql:
+    image: mysql:8.0
+    container_name: mpay-mysql-dev
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mpay_dev
+      MYSQL_USER: mpay_ai
+      MYSQL_PASSWORD: mpay_ai_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # ── AI Agent ───────────────────────────────────────────────
+  agent:
+    build: .
+    container_name: mpay-agent
+    depends_on:
+      mysql:
+        condition: service_healthy
+    env_file: .env
+    environment:
+      MYSQL_HOST: mysql          # override to reach the docker service
+    stdin_open: true             # allows interactive input
+    tty: true
+    volumes:
+      - ./agent:/app/agent       # live-reload during dev
+
+volumes:
+  mysql_data:
