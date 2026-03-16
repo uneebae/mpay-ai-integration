@@ -61,10 +61,11 @@ def cursor(*, commit: bool = False, timeout: int = 30) -> Generator[MySQLCursor,
     
     Args:
         commit: If True, commit on success; rollback on error.
-        timeout: Connection timeout in seconds.
+        timeout: Connection timeout in seconds (not always supported by pool connections).
     """
     conn = get_connection()
-    conn.get_config().update({"connection_timeout": timeout})
+    # Note: Some pooled connections don't support get_config(), so we don't set timeout via config
+    # The timeout is already configured when the pool is initialized
     cur = conn.cursor()
     try:
         yield cur
